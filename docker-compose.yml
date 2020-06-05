@@ -1,0 +1,59 @@
+version: '3'
+services:
+
+  nginx:
+    restart: always
+    build:
+      context: './nginx'
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3050:80" #we will access at localhost:3050 to the default port of nginx
+    depends_on:
+      - api
+      - client
+
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
+
+  redis:
+    image: 'redis:latest'
+
+  api:
+    depends_on:
+      - postgres
+    build:
+      dockerfile: 'Dockerfile.dev' #docker file name used for build
+      context: './server' #file path
+    volumes:
+      - /app/node_modules # not overload
+      - ./server:/app # mapping between server code directory to app container folder (code changes will be reflected to the conatiner)
+    environment:  #environment variable are set in real time when container is created (not stored during image creation)
+      - REDIS_HOST=redis #name of the service can be use as host
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=postgres #service here in docker-compose
+      - PGDATABASE=postgres
+      - PGPORT=5432
+      - PGPASSWORD=postgres_password
+
+  client:
+    stdin_open: true #create-react-app bug
+    build:
+      dockerfile: 'Dockerfile.dev' #docker file name used for build
+      context: './client' #file path
+    volumes:
+      - /app/node_modules # not overload
+      - ./client:/app
+
+  worker:
+    build:
+      dockerfile: 'Dockerfile.dev' #docker file name used for build
+      context: './worker' #file path
+    volumes:
+      - /app/node_modules # not overload
+      - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379

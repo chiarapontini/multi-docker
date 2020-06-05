@@ -1,0 +1,21 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t chiaponz/react-test -f ./client/Dockerfile.dev ./client  # here the build content is not the current folder but /client folder
+script:
+  - docker run -e CI=true chiaponz/react-test npm test #-e CI=true used to exit and return to the command line (no watch mode)
+
+after_success:
+  - docker build -t chiaponz/multi-client ./client
+  - docker build -t chiaponz/multi-server ./server
+  - docker build -t chiaponz/multi-worker ./worker
+  - docker build -t chiaponz/multi-nginx ./nginx
+ # Log in to the docker CI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ # Take this prod images and push them in docker hub
+  - docker push chiaponz/multi-client
+  - docker push chiaponz/multi-server
+  - docker push chiaponz/multi-worker
+  - docker push chiaponz/multi-nginx
