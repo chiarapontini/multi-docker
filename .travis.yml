@@ -19,3 +19,4 @@ after_success:
   - docker push chiaponz/multi-server
   - docker push chiaponz/multi-worker
   - docker push chiaponz/multi-nginx
+  - docker push chiaponz/multi-client
