@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8575cb10-663c-42e8-8821-bb2b3038e982" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-    </list>
+    <list default="true" id="8575cb10-663c-42e8-8821-bb2b3038e982" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -55,8 +52,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="152" />
-    <option name="y" value="56" />
+    <option name="x" value="110" />
+    <option name="y" value="160" />
     <option name="width" value="1245" />
     <option name="height" value="699" />
   </component>
@@ -156,15 +153,15 @@
       <updated>1591260054022</updated>
       <workItem from="1591260060410" duration="6492000" />
       <workItem from="1591276271331" duration="5500000" />
-      <workItem from="1591348312547" duration="6161000" />
+      <workItem from="1591348312547" duration="6318000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18153000" />
+    <option name="totallyTimeSpent" value="18310000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="152" y="56" width="1245" height="699" extended-state="0" />
+    <frame x="110" y="160" width="1245" height="699" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4240196" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
